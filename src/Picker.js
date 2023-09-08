@@ -7,7 +7,7 @@ const Picker = props => {
 
     const scrollY = useRef(new Animated.Value(0)).current;
 
-    const { data, selectText, visible, setVisible, onIndexChange } = props;
+    const { data, selectText, visible, setVisible, selectedItem } = props;
 
     const renderItem = ({ item, index }) => {
 
@@ -35,30 +35,30 @@ const Picker = props => {
 
     const modifiedItems = ['', ...data, ''];
 
-    const momentumScrollEnd = (
-        event,
-    ) => {
+    const momentumScrollEnd = (event) => {
         const y = event.nativeEvent.contentOffset.y;
         const index = Math.round(y / itemHeight);
-        props.onIndexChange(index);
+        props.selectedItem(data[index]);
     };
 
     return (
         <Modal
-            animationType="fade"
+            animationType="slide"
             transparent={true}
             visible={visible}
             onRequestClose={() => {
                 setVisible(!visible);
             }}
         >
-            <View style={{ backgroundColor: '#fff', height: 250, bottom: 0, position: 'absolute', width: '100%' }}>
+            <View style={styles.view}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 18 }}>
-                    <TouchableOpacity style={styles.button} onPress={() => { setVisible(false) }}>
+                    <TouchableOpacity style={styles.button} onPress={() => {
+                        setVisible(false), props.selectedItem({});
+                    }}>
                         <Text style={styles.buttonText}>Cancel</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => { setVisible(false) }}>
                         <Text style={styles.buttonText}>Save</Text>
                     </TouchableOpacity>
                 </View>
@@ -97,6 +97,22 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         textAlign: 'center',
         color: '#000',
+    },
+    view: {
+        backgroundColor: '#fff',
+        height: 250,
+        bottom: 0,
+        position: 'absolute',
+        width: '100%',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
     },
     indicatorHolder: {
         position: 'absolute',

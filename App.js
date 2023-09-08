@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Picker from './src/Picker';
-import { useState } from 'react';
 
 export default function App() {
 
@@ -28,7 +27,7 @@ export default function App() {
     }
   ]
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   return (
     <View style={styles.container}>
@@ -39,7 +38,7 @@ export default function App() {
       <Picker
         data={data}
         selectText={"city"}
-        onIndexChange={(index) => { console.log(index) }}
+        selectedItem={(item) => { console.log("Selected Item", item) }}
         visible={visible}
         setVisible={setVisible}
       />
