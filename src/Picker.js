@@ -7,7 +7,7 @@ const Picker = props => {
 
     const scrollY = useRef(new Animated.Value(0)).current;
 
-    const { data, selectText, visible, setVisible, selectedItem } = props;
+    const { data, selectText, visible, setVisible, cancelButtonText, saveButtonText, selectedItem } = props;
 
     const renderItem = ({ item, index }) => {
 
@@ -55,11 +55,11 @@ const Picker = props => {
                     <TouchableOpacity style={styles.button} onPress={() => {
                         setVisible(false), props.selectedItem({});
                     }}>
-                        <Text style={styles.buttonText}>Cancel</Text>
+                        <Text style={styles.buttonText}>{cancelButtonText || "Cancel"}</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button} onPress={() => { setVisible(false) }}>
-                        <Text style={styles.buttonText}>Save</Text>
+                        <Text style={styles.buttonText}>{saveButtonText || "Save"}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={{ height: itemHeight * 3, width: '100%' }}>
