@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Picker from './src/Picker';
+import { useState } from 'react';
 
 export default function App() {
 
@@ -27,12 +28,20 @@ export default function App() {
     }
   ]
 
+  const [visible, setVisible] = useState(false);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <TouchableOpacity onPress={() => { setVisible(true) }} style={styles.button}>
+        <Text style={styles.buttonText}>Button</Text>
+      </TouchableOpacity>
+
       <Picker
-        items={data}
-        onIndexChange={() => { }}
+        data={data}
+        selectText={"city"}
+        onIndexChange={(index) => { console.log(index) }}
+        visible={visible}
+        setVisible={setVisible}
       />
     </View>
   );
@@ -45,4 +54,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonText: {
+    color: '#007AFF',
+    fontSize: 18
+  }
 });

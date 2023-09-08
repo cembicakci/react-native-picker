@@ -2,6 +2,7 @@ import React from 'react';
 import {
     FlatList,
     ListRenderItemInfo,
+    Modal,
     StyleSheet,
     Text,
     View,
@@ -11,22 +12,33 @@ const Picker = props => {
 
     const itemHeight = 40
 
-    const { items, onIndexChange } = props;
+    const { data, selectText, visible, setVisible, onIndexChange } = props;
 
     const renderItem = ({ item }) => {
         return (
-            <Text style={[styles.pickerItem, { height: itemHeight }]}>{item.city}</Text>
+            <Text style={[styles.pickerItem, { height: itemHeight }]}>{item[selectText]}</Text>
         );
     };
 
     return (
-        <View style={{ height: itemHeight * 3 }}>
-            <FlatList
-                data={items}
-                renderItem={renderItem}
-                showsVerticalScrollIndicator={false}
-            />
-        </View>
+        <Modal
+            animationType="fade"
+            transparent={true}
+            visible={visible}
+            onRequestClose={() => {
+                setVisible(!visible);
+            }}
+        >
+
+            <View style={{ height: itemHeight * 3 }}>
+                <FlatList
+                    data={data}
+                    renderItem={renderItem}
+                    showsVerticalScrollIndicator={false}
+                />
+            </View>
+
+        </Modal>
     );
 };
 
