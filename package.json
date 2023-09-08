@@ -1,7 +1,7 @@
 {
-  "name": "react-native-picker",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "react-native-picker-component",
+  "version": "1.0.1",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -17,5 +17,24 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "description": "***React-Native-Picker*** component is a customizable and easy-to-use package for implementing a wheel picker UI in your React Native applications. This component allows users to select options by spinning a wheel-like interface, making it ideal for scenarios where you need to choose values from a list or perform date and time selections.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cembicakci/react-native-picker.git"
+  },
+  "keywords": [
+    "react-native",
+    "picker",
+    "ios-picker",
+    "flat-list",
+    "component",
+    "ios",
+    "android"
+  ],
+  "author": "Cem Bıçakcı",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cembicakci/react-native-picker/issues"
+  },
+  "homepage": "https://github.com/cembicakci/react-native-picker#readme"
 }
