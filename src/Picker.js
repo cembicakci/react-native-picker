@@ -19,7 +19,7 @@ const Picker = props => {
 
         const scale = scrollY.interpolate({
             inputRange,
-            outputRange: [0.8, 1, 0.8],
+            outputRange: [0.6, 1, 0.6],
         });
 
         return (
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     },
     view: {
         backgroundColor: '#fff',
-        height: 250,
+        height: 220,
         bottom: 0,
         position: 'absolute',
         width: '100%',

@@ -9,6 +9,12 @@ Suitable for both Android and Iphone
 npm i react-native-picker-component
 ```
 
+## Usage
+```
+import Picker from 'react-native-picker-component'
+```
+
+
 ## Preview
 <table>
   <tr >
